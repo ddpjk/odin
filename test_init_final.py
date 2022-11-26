@@ -268,9 +268,6 @@ def init():
 	for i in range(fixed_inputData.count('\r')):
 		fixed_inputData.remove('\r')
 	
-	for i in range(kill_inputData.count('\r')):
-		kill_inputData.remove('\r')
-
 	for i in range(item_inputData.count('\r')):
 		item_inputData.remove('\r')
 
@@ -518,11 +515,6 @@ def init():
 	regenembed.set_footer(text = 'R : 멍 보스')
 
 	##########################################################
-
-
-init()
-
-channel = ''
 
 #mp3 파일 생성함수(gTTS 이용, 남성목소리)
 async def MakeSound(saveSTR, filename):

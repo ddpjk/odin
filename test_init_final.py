@@ -2534,20 +2534,7 @@ class mainCog(commands.Cog):
 		else :
 			return await ctx.send(f'```올바른 명령어를 입력해주세요.```', tts=False)
 
-	################ 채널삭제 ################ 	
-	@commands.command(name=command[42][0], aliases=command[42][1:])
-	async def remove_channel_(self, ctx):
-		global basicSetting
-		if ctx.message.channel.id != basicSetting[7]:
-			return
 
-		msg = ctx.message.content[len(ctx.invoked_with)+1:]
-		channel = ctx.message.channel.id #메세지가 들어온 채널 ID
-
-		else :
-			return await ctx.send(f'```올바른 명령어를 입력해주세요.```', tts=False)
-
-	
 	################ 서버 나가기 ################ 		
 	@commands.has_permissions(manage_messages=True)
 	@commands.command(name=command[34][0], aliases=command[34][1:])

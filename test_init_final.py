@@ -1144,8 +1144,9 @@ class taskCog(commands.Cog):
 						bossFlag[i] = True
 
 					################ 보스 젠 시간 확인 ################ 
-					if bossTime[i] <= now and bossFlag0[i] == True and bossFlag[i] == True :
+					if bossTime[i] <= now and bossFlag0[i] == True and bossFlag[i] == True:
 						#print ('if ', bossTime[i])
+						#print("보스시간 : ", bossTime[i], " 현재시간 : ", now, " 보스명 : ",  bossData[i][0])
 						bossMungFlag[i] = True
 						tmp_bossTime[i] = bossTime[i]
 						tmp_bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M:%S')
@@ -1153,27 +1154,27 @@ class taskCog(commands.Cog):
 						bossTimeString[i] = '99:99:99'
 						bossDateString[i] = '9999-99-99'
 						bossTime[i] = now+datetime.timedelta(days=365)
-						if bossData[i][6] != '' :
-							embed = discord.Embed(
-									description= "```" + bossData[i][0] + bossData[i][4] + '\n<' + bossData[i][6] + '>```' ,
-									color=0x00ff00,
-								title = "Button",
-								description = "보스컷",
-								color = 0xff0000
-									)
+						button_cut = Button(style=ButtonStyle.red, label="컷", id="buttoncut")
 
-						else :
+
+						if bossData[i][7] != '' :
+							embed = discord.Embed(
+									description= "```" + bossData[i][0] + bossData[i][4] + '\n<' + bossData[i][7] + '>```' ,
+									color=0x00ff00
+									)
+						else : 
 							embed = discord.Embed(
 									description= "```" + bossData[i][0] + bossData[i][4] + "```" ,
 									color=0x00ff00
 									)
-						await self.bot.get_channel(channel).send(embed=embed, tts=False)
+						await self.bot.get_channel(channel).send( embed=embed, tts=False, component=button_cut)
+						KakaoSendMSG(basicSetting[8], '보탐봇 : ' + bossData[i][0] + bossData[i][4], basicSetting[9], bossData[i][6])
 						try:
-							if basicSetting[21] == "1":
+							if basicSetting[25] == "1":
 								await PlaySound(self.bot.voice_clients[0], './sound/' + bossData[i][0] + '젠.mp3')
 						except:
 							pass
-
+						
 					################ 보스 자동 멍 처리 ################ 
 					if bossMungFlag[i] == True:
 						if bossData[i][7] == "1":

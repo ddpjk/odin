@@ -1157,11 +1157,9 @@ class taskCog(commands.Cog):
 							embed = discord.Embed(
 									description= "```" + bossData[i][0] + bossData[i][4] + '\n<' + bossData[i][6] + '>```' ,
 									color=0x00ff00,
-								Button(
-									style = ButtonStyle.red ,
-									label = "컷" ,
-									custom_id = "boss_cut"
-								)
+								title = "Button",
+								description = "보스컷",
+								color = 0xff0000
 									)
 
 						else :

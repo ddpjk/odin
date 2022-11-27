@@ -1161,8 +1161,8 @@ class taskCog(commands.Cog):
 							async def 버튼(ctx):
    								 button1 = Button(label="컷", style = discord.ButtonStyle.green)
 									
-							async def button_callback1(interaction):
-								await ctx.send("1번 버튼 클릭!")
+							async def button_callback1(interaction:discord.interaction):
+								await interaction.response.send_message("1번 버튼 클릭!")
 							
 							view = View()
 								view.add_item(button1)

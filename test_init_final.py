@@ -1159,9 +1159,14 @@ class taskCog(commands.Cog):
 									)
 							async def 버튼(ctx):
    								 button1 = Button(label="컷", style = discord.ButtonStyle.green)
+									
+							async def button_callback1(interaction):
+								await ctx.send("1번 버튼 클릭!")
 							
 							view = View()
 								view.add_item(button1)
+							
+							await ctx.send(embed = discord.Embed(title='메뉴 선택하기',description="원하시는 버튼을 클릭해주세요", colour=discord.Colour.blue()), view=view)
 							
 												
 							

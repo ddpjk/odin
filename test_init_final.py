@@ -1099,11 +1099,7 @@ class taskCog(commands.Cog):
 								color=0x00ff00
 								)
 						await self.bot.get_channel(channel).send(embed=embed, tts=False)
-						try:
-							if basicSetting[21] == "1":
-								await PlaySound(self.bot.voice_clients[0], './sound/' + fixed_bossData[i][0] + '젠.mp3')
-						except:
-							pass
+						
 
 				################ 일반 보스 확인 ################ 
 				for i in range(bossNum):
@@ -1169,9 +1165,7 @@ class taskCog(commands.Cog):
 						await self.bot.get_channel(channel).send( embed=embed, tts=False)
 						KakaoSendMSG(basicSetting[8], '보탐봇 : ' + bossData[i][0] + bossData[i][4], basicSetting[9], bossData[i][6])
 						
-						except:
-							pass
-						
+												
 					################ 보스 자동 멍 처리 ################ 
 					if bossMungFlag[i] == True:
 						if bossData[i][7] == "1":

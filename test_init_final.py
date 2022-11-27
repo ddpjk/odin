@@ -7,6 +7,7 @@ import asyncio, discord, aiohttp
 import random, re, datetime, time, logging
 from discord.ext import tasks, commands
 from discord.ext.commands import CommandNotFound, MissingRequiredArgument
+from discord.ui import Button, View
 from gtts import gTTS
 from github import Github
 import base64

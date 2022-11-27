@@ -1154,7 +1154,6 @@ class taskCog(commands.Cog):
 						bossTimeString[i] = '99:99:99'
 						bossDateString[i] = '9999-99-99'
 						bossTime[i] = now+datetime.timedelta(days=365)
-						button_cut = Button(style=ButtonStyle.red, label="컷", id="buttoncut")
 
 
 						if bossData[i][7] != '' :
@@ -1167,7 +1166,7 @@ class taskCog(commands.Cog):
 									description= "```" + bossData[i][0] + bossData[i][4] + "```" ,
 									color=0x00ff00
 									)
-						await self.bot.get_channel(channel).send( embed=embed, tts=False, component=button_cut)
+						await self.bot.get_channel(channel).send( embed=embed, tts=False)
 						KakaoSendMSG(basicSetting[8], '보탐봇 : ' + bossData[i][0] + bossData[i][4], basicSetting[9], bossData[i][6])
 						try:
 							if basicSetting[25] == "1":

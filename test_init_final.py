@@ -1166,6 +1166,8 @@ class taskCog(commands.Cog):
 							
 							view = View()
 								view.add_item(button1)
+								
+								button1.callback = button_callback1
 							
 							await ctx.send(embed = discord.Embed(title='메뉴 선택하기',description="원하시는 버튼을 클릭해주세요", colour=discord.Colour.blue()), view=view)
 							

@@ -7,7 +7,6 @@ import asyncio, discord, aiohttp
 import random, re, datetime, time, logging
 from discord.ext import tasks, commands
 from discord.ext.commands import CommandNotFound, MissingRequiredArgument
-from discord.ui import Button, View
 from gtts import gTTS
 from github import Github
 import base64
@@ -1099,7 +1098,11 @@ class taskCog(commands.Cog):
 								color=0x00ff00
 								)
 						await self.bot.get_channel(channel).send(embed=embed, tts=False)
-						
+						try:
+							if basicSetting[21] == "1":
+								await PlaySound(self.bot.voice_clients[0], './sound/' + fixed_bossData[i][0] + '젠.mp3')
+						except:
+							pass
 
 				################ 일반 보스 확인 ################ 
 				for i in range(bossNum):
@@ -1140,9 +1143,8 @@ class taskCog(commands.Cog):
 						bossFlag[i] = True
 
 					################ 보스 젠 시간 확인 ################ 
-					if bossTime[i] <= now and bossFlag0[i] == True and bossFlag[i] == True:
+					if bossTime[i] <= now and bossFlag0[i] == True and bossFlag[i] == True :
 						#print ('if ', bossTime[i])
-						#print("보스시간 : ", bossTime[i], " 현재시간 : ", now, " 보스명 : ",  bossData[i][0])
 						bossMungFlag[i] = True
 						tmp_bossTime[i] = bossTime[i]
 						tmp_bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M:%S')
@@ -1150,22 +1152,23 @@ class taskCog(commands.Cog):
 						bossTimeString[i] = '99:99:99'
 						bossDateString[i] = '9999-99-99'
 						bossTime[i] = now+datetime.timedelta(days=365)
-
-
-						if bossData[i][7] != '' :
+						if bossData[i][6] != '' :
 							embed = discord.Embed(
-									description= "```" + bossData[i][0] + bossData[i][4] + '\n<' + bossData[i][7] + '>```' ,
+									description= "```" + bossData[i][0] + bossData[i][4] + '\n<' + bossData[i][6] + '>```' ,
 									color=0x00ff00
 									)
-						else : 
+						else :
 							embed = discord.Embed(
 									description= "```" + bossData[i][0] + bossData[i][4] + "```" ,
 									color=0x00ff00
 									)
-						await self.bot.get_channel(channel).send( embed=embed, tts=False)
-						KakaoSendMSG(basicSetting[8], '보탐봇 : ' + bossData[i][0] + bossData[i][4], basicSetting[9], bossData[i][6])
-						
-												
+						await self.bot.get_channel(channel).send(embed=embed, tts=False)
+						try:
+							if basicSetting[21] == "1":
+								await PlaySound(self.bot.voice_clients[0], './sound/' + bossData[i][0] + '젠.mp3')
+						except:
+							pass
+
 					################ 보스 자동 멍 처리 ################ 
 					if bossMungFlag[i] == True:
 						if bossData[i][7] == "1":

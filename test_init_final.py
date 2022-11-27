@@ -1157,6 +1157,14 @@ class taskCog(commands.Cog):
 									description= "```" + bossData[i][0] + bossData[i][4] + '\n<' + bossData[i][6] + '>```' ,
 									color=0x00ff00
 									)
+							async def 버튼(ctx):
+   								 button1 = Button(label="컷", style = discord.ButtonStyle.green)
+							
+							view = View()
+								view.add_item(button1)
+							
+												
+							
 						else :
 							embed = discord.Embed(
 									description= "```" + bossData[i][0] + bossData[i][4] + "```" ,

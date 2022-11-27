@@ -1167,6 +1167,11 @@ class taskCog(commands.Cog):
 							embed = discord.Embed(
 									description= "```" + bossData[i][0] + bossData[i][4] + "```" ,
 									color=0x00ff00
+								Button(
+									style = ButtonStyle.red ,
+									label = "컷" ,
+									custom_id = "boss_cut"
+									)
 									)
 						await self.bot.get_channel(channel).send(embed=embed, tts=False)
 						try:
